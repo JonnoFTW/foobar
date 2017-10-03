@@ -54,12 +54,8 @@ def mat_inv_js(m):
             for ii in range(dim):
                 if C[ii][i] != 0:
                     for j in range(dim):
-                        e = C[i][j]
-                        C[i][j] = C[ii][j]
-                        C[ii][j] = e
-                        e = I[i][j]
-                        I[i][j] = I[ii][j]
-                        I[ii][j] = e
+                        C[i][j], C[ii][j] = C[ii][j], C[i][j]
+                        I[i][j], I[ii][j] = I[ii][j], I[i][j]
                     break
             e = C[i][i]
             if e == 0:
